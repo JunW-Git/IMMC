@@ -125,20 +125,20 @@ def crossover(matches1, matches2):
 
 
 def generate_population():
-    global C, original_C
+    global D, original_D
     list_of_solutions = []
     best_solution = [0, 99999999]
     # List of solutions
     previous = [0, 0]
-    for i in range(1000):
-        solution = [match_up(C), 0]
-        C = copy.deepcopy(original_C)
+    for i in range(10000):
+        solution = [match_up(D), 0]
+        D = copy.deepcopy(original_D)
         solution[1] = score(solution[0])
         # Prevent an already solution from being made again
         while previous == solution:
-            solution = [match_up(C), 0]
+            solution = [match_up(D), 0]
             solution[1] = score(solution[0])
-        if solution[1] < best_solution[1]:
+        if solution[1] < best_solution[1] and solution != 0:
             best_solution = copy.deepcopy(solution)
         previous = solution
         list_of_solutions.append(solution)
